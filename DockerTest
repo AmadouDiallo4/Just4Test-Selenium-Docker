@@ -1,0 +1,46 @@
+// src/test/java
+
+package dockerTest;
+import dockerMain.Main;
+import java.net.MalformedURLException;
+import java.net.URL;
+import java.io.*;
+import org.junit.Test;
+import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.remote.DesiredCapabilities;
+import org.openqa.selenium.remote.RemoteWebDriver;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
+
+public class DockerTest {
+	
+	static String url_local = "";
+	static String url_test = "";
+	static String path_gecko = "";
+	static By input_search = By.xpath("//*[@name='q']");
+	static By link_seleniumhq = By.partialLinkText("SeleniumHQ");
+	static By link_download = By.partialLinkText("Downloads");
+	static int timeOut = 5;
+	static WebDriver driver = null;
+	static DesiredCapabilities dcap = DesiredCapabilities.firefox();
+	
+	@Test
+	public void test() throws MalformedURLException, InterruptedException {
+		dcap = initParam();
+		navigateToSeleniumWebsite(driver);
+		
+		for (int i =1; i<=3; i++)
+		{
+			driver.navigate().forward();
+			Thread.sleep(timeOut*1000);
+		}
+		driver.quit();
+		
+	}
+
+	
+
+}
+
